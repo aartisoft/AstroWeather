@@ -40,7 +40,7 @@
                     android:src="@drawable/ic_settings"
                     android:scaleType="fitCenter"
                     android:background="#3F51B5"
-                    android:onClick="menuOnClick"/>
+                    android:onClick="enterSettings"/>
             </LinearLayout>
 
             <TextView
@@ -48,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Current time: "/>
 
             <TextView
@@ -55,37 +56,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Current position: "/>
         </LinearLayout>
-
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
-
-
-        </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <fragment class="pl.politechnika.szczesm3.astroweather.fragment.SunFragment"
+            android:id="@+id/sunFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <fragment class="pl.politechnika.szczesm3.astroweather.fragment.MoonFragment"
+            android:id="@+id/moonFragment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
