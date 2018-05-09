@@ -13,6 +13,9 @@ public class AppConfig {
     }
 
     private AppConfig() {
+        latitude = 0.00f;
+        longtitude = 0.00f;
+        refreshInterval = 1;
     }
 
     public Float getLatitude() {

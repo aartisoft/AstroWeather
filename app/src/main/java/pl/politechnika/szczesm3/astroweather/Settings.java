@@ -1,14 +1,15 @@
 package pl.politechnika.szczesm3.astroweather;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 import pl.politechnika.szczesm3.astroweather.config.*;
 
@@ -30,25 +31,25 @@ public class Settings extends AppCompatActivity {
 
     public void saveConfig(View v){
         Boolean isUpdated = false;
-        DecimalFormat df = new DecimalFormat("#.######");
-        df.setRoundingMode(RoundingMode.UP);
         String latT = lat.getText().toString();
         String lonT = lon.getText().toString();
-        Integer refresh = Integer.valueOf(freq.getText().toString());
+        Integer refresh = new Integer(0);
+        if(!freq.getText().toString().isEmpty())
+            refresh = Integer.valueOf(freq.getText().toString());
         if(!latT.isEmpty()){
-            if(df.format(latT).matches(LATITUDE_PATTERN)){
+            if(latT.matches(LATITUDE_PATTERN)){
                 isUpdated = true;
                 AppConfig.getInstance().setLatitude(Float.parseFloat(latT));
             } else {
-                Toast.makeText(Settings.this,"Incorrect latitude!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this,"Incorrect latitude!", Toast.LENGTH_LONG).show();
             }
         }
         if(!lonT.isEmpty()){
-            if(df.format(lonT).matches(LONGITUDE_PATTERN)){
+            if(lonT.matches(LONGITUDE_PATTERN)){
                 isUpdated = true;
                 AppConfig.getInstance().setLongtitude(Float.parseFloat(lonT));
             } else {
-                Toast.makeText(Settings.this,"Incorrect longitude!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this,"Incorrect longitude!", Toast.LENGTH_LONG).show();
 
             }
         }
@@ -57,11 +58,14 @@ public class Settings extends AppCompatActivity {
             AppConfig.getInstance().setRefreshInterval(refresh);
         }
         //TODO: remove
-        System.out.println(AppConfig.getInstance());
+        Log.d("CORRENT/APPCONFIG", AppConfig.getInstance().toString());
         if(isUpdated){
-            Toast.makeText(Settings.this,"Settings saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Settings.this,"Settings saved!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(v.getContext(), MainActivity.class);
+            startActivity(intent);
         } else {
             // nothing to do here;
+            Toast.makeText(Settings.this,"Enter some values!", Toast.LENGTH_LONG).show();
         }
     }
 }
