@@ -13,10 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
+        android:paddingBottom="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -28,10 +29,55 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="7"
+                    android:layout_height="40dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="AstroWeather"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/currTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Current time: "/>
+                        <TextClock
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8"
+                            android:format24Hour="hh:mm:ss"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Current position: "/>
+                        <TextView
+                            android:id="@+id/currPosition"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8"/>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <ImageButton
                     android:layout_height="30dp"
@@ -43,21 +89,6 @@
                     android:onClick="enterSettings"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/currTime"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Current time: "/>
-
-            <TextView
-                android:id="@+id/currPosition"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Current position: "/>
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 

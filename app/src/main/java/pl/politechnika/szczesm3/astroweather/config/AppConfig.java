@@ -3,8 +3,8 @@ package pl.politechnika.szczesm3.astroweather.config;
 public class AppConfig {
     private static final AppConfig ourInstance = new AppConfig();
 
-    private Float latitude;
-    private Float longtitude;
+    private double latitude;
+    private double longtitude;
     private Integer refreshInterval;
 
 
@@ -18,19 +18,19 @@ public class AppConfig {
         refreshInterval = 1;
     }
 
-    public Float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public Float getLongtitude() {
+    public double getLongtitude() {
         return longtitude;
     }
 
-    public void setLongtitude(Float longtitude) {
+    public void setLongtitude(double longtitude) {
         this.longtitude = longtitude;
     }
 

@@ -17,12 +17,26 @@
         android:src="@drawable/ic_sun" />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Sunrise (time): "/>
+
+    <TextView
         android:id="@+id/sunriseTime"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Sunrise (time): "/>
+        android:text=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Sunrise (azymut): "/>
 
     <TextView
         android:id="@+id/sunriseAzymut"
@@ -30,7 +44,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Sunrise (azymut): "/>
+        android:text=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Sunset (time): "/>
 
     <TextView
         android:id="@+id/sunsetTime"
@@ -38,7 +59,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Sunset (time): "/>
+        android:text=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Sunset (azymut): "/>
 
     <TextView
         android:id="@+id/sunsetAzymut"
@@ -46,7 +74,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Sunset (azymut): "/>
+        android:text=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Dusk: "/>
 
     <TextView
         android:id="@+id/dusk"
@@ -54,7 +89,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Dusk: "/>
+        android:text=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Dawn: "/>
 
     <TextView
         android:id="@+id/dawn"
@@ -62,5 +104,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Dawn: "/>
+        android:text=""/>
 </LinearLayout>

@@ -3,7 +3,6 @@ package pl.politechnika.szczesm3.astroweather;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.GradientDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 
@@ -12,11 +11,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.support.v7.widget.OrientationHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import pl.politechnika.szczesm3.astroweather.config.AppConfig;
 import pl.politechnika.szczesm3.astroweather.fragment.MoonFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 
@@ -50,6 +50,14 @@ public class MainActivity extends FragmentActivity {
             mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
             tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         }
+
+        setCurrentPosition();
+    }
+
+    public void setCurrentPosition(){
+        String pos = String.valueOf(AppConfig.getInstance().getLatitude()) + "  " + String.valueOf(AppConfig.getInstance().getLongtitude());
+        TextView currentPos = findViewById(R.id.currPosition);
+        currentPos.setText(pos);
     }
 
     @Override
