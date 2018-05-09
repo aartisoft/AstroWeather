@@ -1,5 +1,7 @@
 package pl.politechnika.szczesm3.astroweather;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 
@@ -10,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import pl.politechnika.szczesm3.astroweather.fragment.MoonFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
@@ -17,8 +20,13 @@ import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 public class MainActivity extends FragmentActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    final Context context = this;
     private ViewPager mViewPager;
+
+    public void enterSettings(View v){
+        Intent intent = new Intent(v.getContext(), Settings.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

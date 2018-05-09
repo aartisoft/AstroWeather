@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sunFragment"
     tools:context=".fragment.SunFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is a SunFragment!"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_sun" />
+
+    <TextView
+        android:id="@+id/sunriseTime"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sunrise (time): "/>
+
+    <TextView
+        android:id="@+id/sunriseAzymut"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sunrise (azymut): "/>
+
+    <TextView
+        android:id="@+id/sunsetTime"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sunset (time): "/>
+
+    <TextView
+        android:id="@+id/sunsetAzymut"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sunset (azymut): "/>
+
+    <TextView
+        android:id="@+id/dusk"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Dusk: "/>
+
+    <TextView
+        android:id="@+id/dawn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Dawn: "/>
 </LinearLayout>
