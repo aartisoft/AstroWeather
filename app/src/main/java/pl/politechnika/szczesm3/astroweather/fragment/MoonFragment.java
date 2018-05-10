@@ -1,8 +1,10 @@
 package pl.politechnika.szczesm3.astroweather.fragment;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ public class MoonFragment extends Fragment {
     private double LAT, LON;
     private Integer FREQ;
     private TextView sunriseTime, sunsetTime, closeNew, closeFull, phase, synod;
+    final Handler  handler = new Handler();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -27,6 +30,14 @@ public class MoonFragment extends Fragment {
         retrieveTextViews(moonView);
         fetchData();
         init();
+        handler.postDelayed(new Runnable(){
+            public void run(){
+                Log.d("LOOP MESSAGE", "*** moon refreshed ***");
+                fetchData();
+                init();
+                handler.postDelayed(this, FREQ * 1000);
+            }
+        }, FREQ * 1000);
         return moonView;
     }
 

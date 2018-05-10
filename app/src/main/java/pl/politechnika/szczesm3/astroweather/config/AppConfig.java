@@ -15,7 +15,7 @@ public class AppConfig {
     private AppConfig() {
         latitude = 0.00f;
         longtitude = 0.00f;
-        refreshInterval = 10;
+        refreshInterval = 15;
     }
 
     public double getLatitude() {

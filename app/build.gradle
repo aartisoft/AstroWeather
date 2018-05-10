@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "pl.politechnika.szczesm3.astroweather"
-        minSdkVersion 25
+        minSdkVersion 22
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
