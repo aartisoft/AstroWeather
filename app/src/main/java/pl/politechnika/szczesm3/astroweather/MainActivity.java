@@ -26,7 +26,6 @@ public class MainActivity extends FragmentActivity {
     final Context context = this;
     private ViewPager mViewPager;
 
-    // Enter into layout for change settings
     public void enterSettings(View v){
         Intent intent = new Intent(v.getContext(), Settings.class);
         startActivity(intent);
@@ -53,7 +52,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setCurrentPosition(){
-        String pos = String.valueOf(AppConfig.getInstance().getLatitude()) + "  " + String.valueOf(AppConfig.getInstance().getLongtitude());
+        String pos = String.valueOf(AppConfig.getInstance().getLatitude()) + "  " + String.valueOf(AppConfig.getInstance().getLongitude());
         TextView currentPos = findViewById(R.id.currPosition);
         currentPos.setText(pos);
     }
@@ -74,6 +73,8 @@ public class MainActivity extends FragmentActivity {
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        private final int TAB_COUNT = 2;
+
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -89,7 +90,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return TAB_COUNT;
         }
     }
 }

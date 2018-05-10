@@ -14,7 +14,6 @@ import com.astrocalculator.AstroCalculator;
 import com.astrocalculator.AstroDateTime;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import pl.politechnika.szczesm3.astroweather.R;
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
@@ -70,7 +69,7 @@ public class SunFragment extends Fragment {
 
     private void fetchData() {
         LAT = AppConfig.getInstance().getLatitude();
-        LON = AppConfig.getInstance().getLongtitude();
+        LON = AppConfig.getInstance().getLongitude();
         FREQ = AppConfig.getInstance().getRefreshInterval();
     }
 

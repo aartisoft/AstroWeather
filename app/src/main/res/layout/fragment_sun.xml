@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/sunrise_azymut"/>
+        android:text="@string/sunrise_azimuth"/>
 
     <TextView
         android:id="@+id/sunriseAzymut"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/sunset_azymut"/>
+        android:text="@string/sunset_azimuth"/>
 
     <TextView
         android:id="@+id/sunsetAzymut"

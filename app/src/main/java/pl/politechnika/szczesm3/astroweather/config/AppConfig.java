@@ -4,7 +4,7 @@ public class AppConfig {
     private static final AppConfig ourInstance = new AppConfig();
 
     private double latitude;
-    private double longtitude;
+    private double longitude;
     private Integer refreshInterval;
 
 
@@ -13,9 +13,9 @@ public class AppConfig {
     }
 
     private AppConfig() {
-        latitude = 0.00f;
-        longtitude = 0.00f;
-        refreshInterval = 15;
+        latitude = 51.648042d;
+        longitude = 19.376321d;
+        refreshInterval = 7;
     }
 
     public double getLatitude() {
@@ -26,12 +26,12 @@ public class AppConfig {
         this.latitude = latitude;
     }
 
-    public double getLongtitude() {
-        return longtitude;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLongtitude(double longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public Integer getRefreshInterval() {
@@ -46,7 +46,7 @@ public class AppConfig {
     public String toString() {
         return "AppConfig{" +
                 "latitude=" + latitude +
-                ", longtitude=" + longtitude +
+                ", longitude=" + longitude +
                 ", refreshInterval=" + refreshInterval +
                 '}';
     }

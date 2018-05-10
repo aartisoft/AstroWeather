@@ -1,6 +1,5 @@
 package pl.politechnika.szczesm3.astroweather.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.astrocalculator.AstroCalculator;
 import com.astrocalculator.AstroDateTime;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import pl.politechnika.szczesm3.astroweather.R;
@@ -71,7 +69,7 @@ public class MoonFragment extends Fragment {
 
     private void fetchData() {
         LAT = AppConfig.getInstance().getLatitude();
-        LON = AppConfig.getInstance().getLongtitude();
+        LON = AppConfig.getInstance().getLongitude();
         FREQ = AppConfig.getInstance().getRefreshInterval();
     }
 

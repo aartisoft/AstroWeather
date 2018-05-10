@@ -15,8 +15,6 @@ import pl.politechnika.szczesm3.astroweather.config.*;
 public class Settings extends AppCompatActivity implements Serializable{
 
     EditText lat, lon, freq;
-    //protected static final String LATITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
-    //protected static final String LONGITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +41,7 @@ public class Settings extends AppCompatActivity implements Serializable{
     }
 
     public String getCurrentLon() {
-        return String.valueOf(AppConfig.getInstance().getLongtitude());
+        return String.valueOf(AppConfig.getInstance().getLongitude());
     }
 
     public String getCurrentFreq() {
@@ -59,7 +57,7 @@ public class Settings extends AppCompatActivity implements Serializable{
         if(!freq.getText().toString().isEmpty())
             refresh = Integer.valueOf(freq.getText().toString());
         if(!latT.isEmpty()){
-            if(-90 < Double.parseDouble(latT) && Double.parseDouble(latT) < 90){
+            if(-90 <= Double.parseDouble(latT) && Double.parseDouble(latT) <= 90){
                 isUpdated = true;
                 AppConfig.getInstance().setLatitude(Double.parseDouble(latT));
             } else {
@@ -68,9 +66,9 @@ public class Settings extends AppCompatActivity implements Serializable{
             }
         }
         if(!lonT.isEmpty()){
-            if(-180 < Double.parseDouble(lonT) && Double.parseDouble(lonT) < 180){
+            if(-180 <= Double.parseDouble(lonT) && Double.parseDouble(lonT) <= 180){
                 isUpdated = true;
-                AppConfig.getInstance().setLongtitude(Double.parseDouble(lonT));
+                AppConfig.getInstance().setLongitude(Double.parseDouble(lonT));
             } else {
                 errorAlreadySent = true;
                 Toast.makeText(Settings.this,"Incorrect longitude!", Toast.LENGTH_LONG).show();
