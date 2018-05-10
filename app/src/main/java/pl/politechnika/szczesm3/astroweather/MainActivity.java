@@ -21,9 +21,6 @@ import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 
 public class MainActivity extends FragmentActivity {
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
-
     public void enterSettings(View v){
         Intent intent = new Intent(v.getContext(), Settings.class);
         startActivity(intent);
@@ -35,9 +32,9 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+            SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-            mViewPager = findViewById(R.id.container);
+            ViewPager mViewPager = findViewById(R.id.container);
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
             TabLayout tabLayout = findViewById(R.id.tabs);
