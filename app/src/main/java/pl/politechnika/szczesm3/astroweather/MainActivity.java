@@ -1,6 +1,5 @@
 package pl.politechnika.szczesm3.astroweather;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.TabLayout;
@@ -23,7 +22,6 @@ import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 public class MainActivity extends FragmentActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    final Context context = this;
     private ViewPager mViewPager;
 
     public void enterSettings(View v){
@@ -51,7 +49,7 @@ public class MainActivity extends FragmentActivity {
         setCurrentPosition();
     }
 
-    public void setCurrentPosition(){
+    private void setCurrentPosition(){
         String pos = String.valueOf(AppConfig.getInstance().getLatitude()) + "  " + String.valueOf(AppConfig.getInstance().getLongitude());
         TextView currentPos = findViewById(R.id.currPosition);
         currentPos.setText(pos);
@@ -71,7 +69,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         private final int TAB_COUNT = 2;
 

@@ -23,7 +23,7 @@ public class SunFragment extends Fragment {
     private double LAT, LON;
     private Integer FREQ;
     private TextView sunriseTime, sunriseAzimuth, sunsetTime, sunsetAzimuth, dusk, dawn;
-    final Handler handler = new Handler();
+    private final Handler handler = new Handler();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -47,7 +47,7 @@ public class SunFragment extends Fragment {
         startHandler();
     }
 
-    public void startHandler() {
+    private void startHandler() {
         handler.postDelayed(new Runnable(){
             public void run(){
                 Log.d("LOOP MESSAGE", "*** sun refreshed ***");
@@ -60,9 +60,9 @@ public class SunFragment extends Fragment {
 
     private void retrieveTextViews(View v) {
         sunriseTime = v.findViewById(R.id.sunriseTime);
-        sunriseAzimuth = v.findViewById(R.id.sunriseAzymut);
+        sunriseAzimuth = v.findViewById(R.id.sunriseAzimuth);
         sunsetTime = v.findViewById(R.id.sunsetTime);
-        sunsetAzimuth = v.findViewById(R.id.sunsetAzymut);
+        sunsetAzimuth = v.findViewById(R.id.sunsetAzimuth);
         dusk = v.findViewById(R.id.dusk);
         dawn = v.findViewById(R.id.dawn);
     }

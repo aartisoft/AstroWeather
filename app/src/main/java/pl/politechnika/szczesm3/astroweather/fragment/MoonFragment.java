@@ -23,7 +23,7 @@ public class MoonFragment extends Fragment {
     private double LAT, LON;
     private Integer FREQ;
     private TextView sunriseTime, sunsetTime, closeNew, closeFull, phase, synod;
-    final Handler  handler = new Handler();
+    private final Handler handler = new Handler();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -47,7 +47,7 @@ public class MoonFragment extends Fragment {
         startHandler();
     }
 
-    public void startHandler() {
+    private void startHandler() {
         handler.postDelayed(new Runnable(){
             public void run(){
                 Log.d("LOOP MESSAGE", "*** moon refreshed ***");

@@ -40,7 +40,7 @@
         android:text="@string/sunrise_azimuth"/>
 
     <TextView
-        android:id="@+id/sunriseAzymut"
+        android:id="@+id/sunriseAzimuth"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -70,7 +70,7 @@
         android:text="@string/sunset_azimuth"/>
 
     <TextView
-        android:id="@+id/sunsetAzymut"
+        android:id="@+id/sunsetAzimuth"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

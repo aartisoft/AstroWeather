@@ -14,7 +14,7 @@ import pl.politechnika.szczesm3.astroweather.config.*;
 
 public class Settings extends AppCompatActivity implements Serializable{
 
-    EditText lat, lon, freq;
+    private EditText lat, lon, freq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +36,15 @@ public class Settings extends AppCompatActivity implements Serializable{
         freq.setHint(getCurrentFreq());
     }
 
-    public String getCurrentLat() {
+    private String getCurrentLat() {
         return String.valueOf(AppConfig.getInstance().getLatitude());
     }
 
-    public String getCurrentLon() {
+    private String getCurrentLon() {
         return String.valueOf(AppConfig.getInstance().getLongitude());
     }
 
-    public String getCurrentFreq() {
+    private String getCurrentFreq() {
         return String.valueOf(AppConfig.getInstance().getRefreshInterval());
     }
 
@@ -80,7 +80,7 @@ public class Settings extends AppCompatActivity implements Serializable{
             AppConfig.getInstance().setRefreshInterval(refresh);
         }
         //TODO: remove
-        Log.d("CORRENT/APPCONFIG", AppConfig.getInstance().toString());
+        Log.d("CURRENT/APPCONFIG", AppConfig.getInstance().toString());
         if(isUpdated){
             Toast.makeText(Settings.this,"Settings saved!", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(v.getContext(), MainActivity.class);
