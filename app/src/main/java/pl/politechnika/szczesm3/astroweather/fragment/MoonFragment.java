@@ -1,5 +1,6 @@
 package pl.politechnika.szczesm3.astroweather.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.astrocalculator.AstroCalculator;
 import com.astrocalculator.AstroDateTime;
+
+import java.text.SimpleDateFormat;
 
 import pl.politechnika.szczesm3.astroweather.R;
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
@@ -71,10 +74,11 @@ public class MoonFragment extends Fragment {
     }
 
     private void setData(AstroCalculator calc) {
-        sunriseTime.setText(calc.getMoonInfo().getMoonrise().toString());
-        sunsetTime.setText(calc.getMoonInfo().getMoonset().toString());
-        closeNew.setText(calc.getMoonInfo().getNextNewMoon().toString());
-        closeFull.setText(calc.getMoonInfo().getNextFullMoon().toString());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        sunriseTime.setText(sdf.format(calc.getMoonInfo().getMoonrise()));
+        sunsetTime.setText(sdf.format(calc.getMoonInfo().getMoonset().toString()));
+        closeNew.setText(sdf.format(calc.getMoonInfo().getNextNewMoon().toString()));
+        closeFull.setText(sdf.format(calc.getMoonInfo().getNextFullMoon().toString()));
         double proc = calc.getMoonInfo().getIllumination() * 100;
         String procText = String.valueOf(proc) + "%";
         phase.setText(procText);

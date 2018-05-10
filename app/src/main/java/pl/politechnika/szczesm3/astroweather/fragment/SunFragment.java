@@ -1,8 +1,8 @@
 package pl.politechnika.szczesm3.astroweather.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.astrocalculator.AstroCalculator;
 import com.astrocalculator.AstroDateTime;
+
+import java.text.SimpleDateFormat;
 
 import pl.politechnika.szczesm3.astroweather.R;
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
@@ -73,11 +75,12 @@ public class SunFragment extends Fragment {
     }
 
     private void setData(AstroCalculator calc) {
-        sunriseTime.setText(calc.getSunInfo().getSunrise().toString());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        sunriseTime.setText(sdf.format(calc.getSunInfo().getSunrise().toString()));
         sunriseAzymut.setText(String.valueOf(calc.getSunInfo().getAzimuthRise()));
-        sunsetTime.setText(calc.getSunInfo().getSunset().toString());
+        sunsetTime.setText(sdf.format(calc.getSunInfo().getSunset().toString()));
         sunsetAzymut.setText(String.valueOf(calc.getSunInfo().getAzimuthSet()));
-        dusk.setText(calc.getSunInfo().getTwilightMorning().toString());
-        dawn.setText(calc.getSunInfo().getTwilightEvening().toString());
+        dusk.setText(sdf.format(calc.getSunInfo().getTwilightMorning().toString()));
+        dawn.setText(sdf.format(calc.getSunInfo().getTwilightEvening().toString()));
     }
 }
