@@ -14,14 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_moon" />
+        android:src="@drawable/ic_moon"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="Sunrise (time): "/>
+        android:text="@string/sunrise_time"/>
 
     <TextView
         android:id="@+id/sunriseTime"
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="Sunset (time): "/>
+        android:text="@string/sunset_time"/>
 
     <TextView
         android:id="@+id/sunsetTime"
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="Closest new: "/>
+        android:text="@string/closest_new"/>
 
     <TextView
         android:id="@+id/newMoon"
@@ -66,7 +67,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="Closest full: "/>
+        android:text="@string/closest_full"/>
 
     <TextView
         android:id="@+id/fullMoon"
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="Moon phase: "/>
+        android:text="@string/moon_phase"/>
 
     <TextView
         android:id="@+id/phase"
@@ -96,7 +97,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:text="The day of the synod month: "/>
+        android:text="@string/the_day_of_the_synod_month"/>
 
     <TextView
         android:id="@+id/synod"

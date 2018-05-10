@@ -14,81 +14,78 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
         android:paddingBottom="@dimen/appbar_padding_top"
+        android:orientation="vertical"
         android:theme="@style/AppTheme.AppBarOverlay">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/astroweather"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="AstroWeather"/>
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/currTime"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Current time: "/>
-                        <TextClock
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="8"
-                            android:format24Hour="hh:mm:ss"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Current position: "/>
-                        <TextView
-                            android:id="@+id/currPosition"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="8"/>
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/currTime"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/current_time"/>
+                    <TextClock
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8"
+                        android:format24Hour="hh:mm:ss"/>
                 </LinearLayout>
 
-                <ImageButton
-                    android:layout_height="30dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_settings"
-                    android:scaleType="fitCenter"
-                    android:background="#3F51B5"
-                    android:onClick="enterSettings"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/current_position"/>
+                    <TextView
+                        android:id="@+id/currPosition"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textColor="white"
+                        android:layout_weight="8"/>
+                </LinearLayout>
             </LinearLayout>
 
+            <ImageButton
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_settings"
+                android:scaleType="fitCenter"
+                android:background="#3F51B5"
+                android:onClick="enterSettings"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -97,7 +94,8 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:baselineAligned="false">
 
         <fragment class="pl.politechnika.szczesm3.astroweather.fragment.SunFragment"
             android:id="@+id/sunFragment"

@@ -3,4 +3,24 @@
     <string name="tab_text_1">SUN</string>
     <string name="tab_text_2">MOON</string>
     <string name="action_settings">Settings</string>
+    <string name="dusk">Dusk:</string>
+    <string name="sunset_azymut">Sunset (azymut):</string>
+    <string name="sunset_time">Sunset (time):</string>
+    <string name="sunrise_azymut">Sunrise (azymut):</string>
+    <string name="sunrise_time">Sunrise (time):</string>
+    <string name="dawn">Dawn:</string>
+    <string name="the_day_of_the_synod_month">The day of the synod month:</string>
+    <string name="moon_phase">Moon phase:</string>
+    <string name="closest_full">Closest full:</string>
+    <string name="closest_new">Closest new:</string>
+    <string name="enter_latitude">Enter latitude:</string>
+    <string name="example_lat">38.898648</string>
+    <string name="enter_longitude">Enter longitude:</string>
+    <string name="enter_refresh_interval_s">Enter refresh interval [s]:</string>
+    <string name="save">Save</string>
+    <string name="example_lon">77.037692</string>
+    <string name="example_freq">3</string>
+    <string name="current_position">Current position:</string>
+    <string name="current_time">Current time:</string>
+    <string name="astroweather">AstroWeather</string>
 </resources>

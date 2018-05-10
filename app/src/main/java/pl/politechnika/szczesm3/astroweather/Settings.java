@@ -1,7 +1,6 @@
 package pl.politechnika.szczesm3.astroweather;
 
 import android.content.Intent;
-import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,15 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.Serializable;
-import java.math.RoundingMode;
 
 import pl.politechnika.szczesm3.astroweather.config.*;
 
 public class Settings extends AppCompatActivity implements Serializable{
 
     EditText lat, lon, freq;
-    protected static final String LATITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
-    protected static final String LONGITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
+    //protected static final String LATITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
+    //protected static final String LONGITUDE_PATTERN="^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,7 @@ public class Settings extends AppCompatActivity implements Serializable{
         Boolean errorAlreadySent = false;
         String latT = lat.getText().toString();
         String lonT = lon.getText().toString();
-        Integer refresh = new Integer(0);
+        Integer refresh = 0;
         if(!freq.getText().toString().isEmpty())
             refresh = Integer.valueOf(freq.getText().toString());
         if(!latT.isEmpty()){

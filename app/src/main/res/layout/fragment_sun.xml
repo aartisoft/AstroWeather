@@ -14,14 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_sun" />
+        android:src="@drawable/ic_sun"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Sunrise (time): "/>
+        android:text="@string/sunrise_time"/>
 
     <TextView
         android:id="@+id/sunriseTime"
@@ -34,9 +35,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Sunrise (azymut): "/>
+        android:text="@string/sunrise_azymut"/>
 
     <TextView
         android:id="@+id/sunriseAzymut"
@@ -49,9 +50,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Sunset (time): "/>
+        android:text="@string/sunset_time"/>
 
     <TextView
         android:id="@+id/sunsetTime"
@@ -64,9 +65,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Sunset (azymut): "/>
+        android:text="@string/sunset_azymut"/>
 
     <TextView
         android:id="@+id/sunsetAzymut"
@@ -79,9 +80,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Dusk: "/>
+        android:text="@string/dusk"/>
 
     <TextView
         android:id="@+id/dusk"
@@ -94,9 +95,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Dawn: "/>
+        android:text="@string/dawn"/>
 
     <TextView
         android:id="@+id/dawn"

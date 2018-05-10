@@ -1,5 +1,6 @@
 package pl.politechnika.szczesm3.astroweather.fragment;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ public class MoonFragment extends Fragment {
     private TextView sunriseTime, sunsetTime, closeNew, closeFull, phase, synod;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View moonView = inflater.inflate(R.layout.fragment_moon, container, false);
         retrieveTextViews(moonView);
@@ -63,7 +64,9 @@ public class MoonFragment extends Fragment {
         sunsetTime.setText(calc.getMoonInfo().getMoonset().toString());
         closeNew.setText(calc.getMoonInfo().getNextNewMoon().toString());
         closeFull.setText(calc.getMoonInfo().getNextFullMoon().toString());
-        phase.setText(String.valueOf(calc.getMoonInfo().getIllumination()) + "%");
+        double proc = calc.getMoonInfo().getIllumination() * 100;
+        String procText = String.valueOf(proc) + "%";
+        phase.setText(procText);
         synod.setText(String.valueOf(calc.getMoonInfo().getAge()));
     }
 }
