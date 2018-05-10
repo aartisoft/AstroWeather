@@ -27,6 +27,12 @@ public class Settings extends AppCompatActivity implements Serializable{
         lon = findViewById(R.id.longitude);
         freq = findViewById(R.id.refreshTime);
 
+        if(savedInstanceState != null){
+            lat.setText(savedInstanceState.getString("lat"));
+            lon.setText((savedInstanceState.getString("lon")));
+            freq.setText(savedInstanceState.getString("freq"));
+        }
+
         lat.setHint(getCurrentLat());
         lon.setHint(getCurrentLon());
         freq.setHint(getCurrentFreq());
@@ -85,5 +91,13 @@ public class Settings extends AppCompatActivity implements Serializable{
             // nothing to do here;
             Toast.makeText(Settings.this,"Enter some values!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("lat", lat.getText().toString());
+        outState.putString("lon", lon.getText().toString());
+        outState.putString("freq", freq.getText().toString());
     }
 }
