@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
@@ -21,15 +22,21 @@ import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 
 public class MainActivity extends FragmentActivity {
 
-    public void enterSettings(View v){
-        Intent intent = new Intent(v.getContext(), Settings.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageButton goToSettings = findViewById(R.id.goToSettings);
+
+        goToSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Settings.class);
+                startActivity(intent);
+            }
+        });
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

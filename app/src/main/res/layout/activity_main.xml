@@ -30,13 +30,13 @@
                 android:text="@string/astroweather"/>
 
             <ImageButton
+                android:id="@+id/goToSettings"
                 android:layout_height="30dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_settings"
                 android:scaleType="fitCenter"
                 android:background="#3F51B5"
-                android:onClick="enterSettings"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
 
