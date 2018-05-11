@@ -17,7 +17,7 @@
         android:layout_margin="5dp"
         android:src="@drawable/sun"
         tools:ignore="ContentDescription" />
-
+    <!-- Icon made by DinosoftLabs from www.flaticon.com  -->
 
     <LinearLayout
         android:layout_width="wrap_content"
