@@ -78,7 +78,7 @@ public class SunFragment extends Fragment {
         AstroCalculator.Location loc = new AstroCalculator.Location(LAT, LON);
         Log.d("CURRENT_TIME", Calendar.getInstance().getTime().toString());
         AstroDateTime date = new AstroDateTime(
-                Calendar.getInstance().get(Calendar.YEAR) + 1900,
+                Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH) + 1,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
                 Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
