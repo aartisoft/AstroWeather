@@ -13,6 +13,8 @@
     <string name="moon_phase">Moon phase:</string>
     <string name="closest_full">Closest full:</string>
     <string name="closest_new">Closest new:</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longtitude">Longtitude:</string>
     <string name="enter_latitude">Enter latitude:</string>
     <string name="example_lat">38.898648</string>
     <string name="enter_longitude">Enter longitude:</string>
@@ -23,4 +25,11 @@
     <string name="current_position">Current position:</string>
     <string name="current_time">Current time:</string>
     <string name="astroweather">AstroWeather</string>
+    <string name="city_name">City name:</string>
+    <string name="temperature">Temperature:</string>
+    <string name="pressure">Pressure:</string>
+    <string name="visibility">Visibility:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="wind_direction">Wind direction:</string>
+    <string name="wind_speed">Wind speed:</string>
 </resources>
