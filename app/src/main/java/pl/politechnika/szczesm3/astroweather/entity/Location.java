@@ -18,6 +18,8 @@ public class Location {
     private double longitude;
     @NonNull
     private double woeid;
+    @NonNull
+    private char unit;
 
     public Location() {
     }
@@ -66,8 +68,17 @@ public class Location {
         this.woeid = woeid;
     }
 
+    @NonNull
+    public char getUnit() {
+        return unit;
+    }
+
+    public void setUnit(@NonNull char unit) {
+        this.unit = unit;
+    }
+
     @Override
     public String toString() {
-        return name + " | " + latitude + "  " + longitude;
+        return name + " | " + latitude + "  " + longitude + " | units: " + ("f".equals(unit) ? "Imperial" : "Metric");
     }
 }
