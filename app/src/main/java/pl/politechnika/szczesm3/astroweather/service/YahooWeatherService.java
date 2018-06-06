@@ -142,9 +142,9 @@ public class YahooWeatherService {
                         return;
                     }
 
-                    Place place = new Place();
-                    place.crawl(queryResults.optJSONObject("results").optJSONObject("place"));
-                    callback.callbackSuccess(place);
+                    Channel channel = new Channel();
+                    channel.crawl(queryResults.optJSONObject("results").optJSONObject("channel"));
+                    callback.callbackSuccess(channel);
                 } catch (JSONException e) {
                     callback.callbackFailure(e);
                 }
