@@ -26,21 +26,7 @@ import pl.politechnika.szczesm3.astroweather.data.Place;
 public class YahooWeatherService {
 
     private Callback callback;
-
-    public String getLocation() {
-        return location;
-    }
-
     private String location;
-
-    public String getWoeid() {
-        return woeid;
-    }
-
-    public String getUnits() {
-        return units;
-    }
-
     private String woeid;
     private String units;
     private String ENDPOINT_LOCATION = "https://query.yahooapis.com/v1/public/yql?q=%s&format=json";
@@ -164,5 +150,17 @@ public class YahooWeatherService {
                 }
             }
         }.execute(this.woeid, this.units);
+    }
+
+    public String getWoeid() {
+        return woeid;
+    }
+
+    public String getUnits() {
+        return units;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

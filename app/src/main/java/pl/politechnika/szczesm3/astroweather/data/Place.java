@@ -1,5 +1,6 @@
 package pl.politechnika.szczesm3.astroweather.data;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Place implements JSONCrawler {
@@ -12,6 +13,11 @@ public class Place implements JSONCrawler {
         this.name = obj.optString("name");
         this.woeid = obj.optInt("woeid");
         centroid = new CentroId();
-            centroid.crawl(obj.optJSONObject("centroid"));
+        centroid.crawl(obj.optJSONObject("centroid"));
+    }
+
+    @Override
+    public void crawl(JSONArray array) {
+
     }
 }
