@@ -17,15 +17,19 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
+import pl.politechnika.szczesm3.astroweather.fragment.ForecastFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.MoonFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
+import pl.politechnika.szczesm3.astroweather.fragment.SunMoonConnector;
+import pl.politechnika.szczesm3.astroweather.fragment.WeatherFragment;
+import pl.politechnika.szczesm3.astroweather.repository.LocationRepository;
 
 public class MainActivity extends FragmentActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(null);
         setContentView(R.layout.activity_main);
 
         ImageButton goToSettings = findViewById(R.id.goToSettings);
@@ -38,17 +42,15 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-            ViewPager mViewPager = findViewById(R.id.container);
-            mViewPager.setAdapter(mSectionsPagerAdapter);
+        ViewPager mViewPager = findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-            TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
 
-            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-            tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        }
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
         setCurrentPosition();
     }
@@ -68,31 +70,58 @@ public class MainActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
-
     }
 
     class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        private final int TAB_COUNT = 2;
+        private final int PORTRAIT_TAB_COUNT = 4;
+        private final int LANDSCAPE_TAB_COUNT = 3;
+        private final Integer orientation;
 
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            orientation = getResources().getConfiguration().orientation;
         }
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 0){
-                return new SunFragment();
+            if (orientation.equals(Configuration.ORIENTATION_PORTRAIT)) {
+                switch (position) {
+                    case 0:
+                        return new SunFragment();
+                    case 1:
+                        return new MoonFragment();
+                    case 2:
+                        return new WeatherFragment();
+                    case 3:
+                        return new ForecastFragment();
+                    default:
+                        return null;
+                }
             } else {
-                return new MoonFragment();
+                // if orientation == Configuration.ORIENTATION_LANDSCAPE
+                switch (position) {
+                    case 0:
+                        return new SunMoonConnector();
+                    case 1:
+                        return new WeatherFragment();
+                    case 2:
+                        return new ForecastFragment();
+                    default:
+                        return null;
+                }
             }
         }
 
         @Override
         public int getCount() {
-            return TAB_COUNT;
+            //Log.d("ORIENTATION: ", orientation.toString());
+            if (orientation.equals(Configuration.ORIENTATION_PORTRAIT)) {
+                return PORTRAIT_TAB_COUNT;
+            } else {
+                // if orientation == Configuration.ORIENTATION_LANDSCAPE
+                return LANDSCAPE_TAB_COUNT;
+            }
         }
     }
 }

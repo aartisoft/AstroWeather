@@ -90,4 +90,13 @@
         android:layout_marginBottom="25dp"
         android:text="@string/save"
         android:onClick="saveConfig"/>
+
+    <Button
+        android:id="@+id/goToFavs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:text="@string/manage_favorite_cities"/>
 </LinearLayout>

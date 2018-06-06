@@ -32,4 +32,10 @@
     <string name="humidity">Humidity:</string>
     <string name="wind_direction">Wind direction:</string>
     <string name="wind_speed">Wind speed:</string>
+    <string name="weather">Weather</string>
+    <string name="weather_extended">Weather Extended</string>
+    <string name="forecast">Forecast</string>
+    <string name="sun_moon"><![CDATA[SUN & MOON]]></string>
+    <string name="add">Add to favorites</string>
+    <string name="manage_favorite_cities">Manage favorite cities</string>
 </resources>

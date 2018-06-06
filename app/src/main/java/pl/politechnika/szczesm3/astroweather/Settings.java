@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +25,16 @@ public class Settings extends AppCompatActivity implements Serializable{
         lat = findViewById(R.id.latitude);
         lon = findViewById(R.id.longitude);
         freq = findViewById(R.id.refreshTime);
+
+        Button goToFavs = findViewById(R.id.goToFavs);
+
+        goToFavs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), FavoriteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         if(savedInstanceState != null){
             lat.setText(savedInstanceState.getString("lat"));
@@ -46,6 +57,11 @@ public class Settings extends AppCompatActivity implements Serializable{
 
     private String getCurrentFreq() {
         return String.valueOf(AppConfig.getInstance().getRefreshInterval());
+    }
+
+    public void goToFavorites(View v) {
+        Intent intent = new Intent(v.getContext(), FavoriteActivity.class);
+        startActivity(intent);
     }
 
     public void saveConfig(View v){

@@ -98,6 +98,21 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_text_2" />
 
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weather" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weather_extended" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forecast" />
+
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
