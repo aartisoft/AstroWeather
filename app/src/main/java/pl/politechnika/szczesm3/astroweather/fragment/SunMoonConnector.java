@@ -4,6 +4,8 @@ package pl.politechnika.szczesm3.astroweather.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,6 @@ public class SunMoonConnector extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View sunMoonView = inflater.inflate(R.layout.sun_moon_fragment, container, false);
-        return sunMoonView;
+        return inflater.inflate(R.layout.sun_moon_fragment, container, false);
     }
 }
