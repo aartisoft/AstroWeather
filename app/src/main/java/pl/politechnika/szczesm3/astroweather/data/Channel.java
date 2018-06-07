@@ -1,6 +1,9 @@
 package pl.politechnika.szczesm3.astroweather.data;
 
+import android.util.Log;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Channel implements JSONCrawler{
@@ -11,7 +14,7 @@ public class Channel implements JSONCrawler{
     public Item item;
 
     @Override
-    public void crawl(JSONObject obj) {
+    public void crawl(JSONObject obj){
         this.unit = new Unit();
         this.unit.crawl(obj.optJSONObject("units"));
 

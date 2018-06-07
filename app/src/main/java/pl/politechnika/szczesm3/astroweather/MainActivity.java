@@ -2,6 +2,7 @@ package pl.politechnika.szczesm3.astroweather;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 
@@ -15,22 +16,43 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
+import pl.politechnika.szczesm3.astroweather.data.Channel;
+import pl.politechnika.szczesm3.astroweather.data.Place;
 import pl.politechnika.szczesm3.astroweather.fragment.ForecastFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.MoonFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.SunFragment;
 import pl.politechnika.szczesm3.astroweather.fragment.SunMoonConnector;
 import pl.politechnika.szczesm3.astroweather.fragment.WeatherFragment;
+import pl.politechnika.szczesm3.astroweather.manager.FileManager;
 import pl.politechnika.szczesm3.astroweather.repository.LocationRepository;
+import pl.politechnika.szczesm3.astroweather.service.Callback;
+import pl.politechnika.szczesm3.astroweather.service.YahooWeatherService;
 
-public class MainActivity extends FragmentActivity {
-
+public class MainActivity extends FragmentActivity implements Callback {
+    LocationRepository locationRepository;
+    YahooWeatherService service;
+    FileManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(null);
         setContentView(R.layout.activity_main);
+
+        fm = new FileManager(this);
+
+        service = new YahooWeatherService(this);
+        service.getForecast(AppConfig.getInstance().getWoeid(), AppConfig.getInstance().getUnits());
+
+        locationRepository = new LocationRepository(getApplication());
+        //locationRepository.deleteAll(); // uncomment to remove DB at start-up
 
         ImageButton goToSettings = findViewById(R.id.goToSettings);
 
@@ -62,6 +84,12 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        setCurrentPosition();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -71,6 +99,21 @@ public class MainActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void callbackSuccess(JSONObject json) {
+        try {
+            fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + ".json", json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void callbackFailure(Exception e) {
+        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+
     }
 
     class SectionsPagerAdapter extends FragmentPagerAdapter {

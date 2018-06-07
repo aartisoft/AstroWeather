@@ -14,7 +14,7 @@
     <string name="closest_full">Closest full:</string>
     <string name="closest_new">Closest new:</string>
     <string name="latitude">Latitude:</string>
-    <string name="longtitude">Longtitude:</string>
+    <string name="longitude">Longitude:</string>
     <string name="enter_latitude">Enter latitude:</string>
     <string name="example_lat">38.898648</string>
     <string name="enter_longitude">Enter longitude:</string>
@@ -38,4 +38,9 @@
     <string name="sun_moon"><![CDATA[SUN & MOON]]></string>
     <string name="add">Add to favorites</string>
     <string name="manage_favorite_cities">Manage favorite cities</string>
+    <string name="city">_CITY_</string>
+    <string name="unit">UNIT</string>
+    <string name="lon">LON</string>
+    <string name="lat">LAT</string>
+    <string name="name">NAME</string>
 </resources>

@@ -7,6 +7,7 @@ public class Location implements JSONCrawler {
     public String city;
     public String country;
     public String region;
+
     @Override
     public void crawl(JSONObject obj) {
         this.city = obj.optString("city");

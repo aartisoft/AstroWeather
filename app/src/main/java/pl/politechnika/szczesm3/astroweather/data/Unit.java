@@ -1,6 +1,7 @@
 package pl.politechnika.szczesm3.astroweather.data;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Unit implements JSONCrawler {

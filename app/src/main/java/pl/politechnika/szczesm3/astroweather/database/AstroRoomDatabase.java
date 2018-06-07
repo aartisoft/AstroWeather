@@ -8,7 +8,7 @@ import android.content.Context;
 import pl.politechnika.szczesm3.astroweather.dao.LocationDao;
 import pl.politechnika.szczesm3.astroweather.entity.Location;
 
-@Database(entities = {Location.class}, version = 1, exportSchema = false)
+@Database(entities = {Location.class}, version = 3, exportSchema = false)
 public abstract class AstroRoomDatabase extends RoomDatabase {
 
     public abstract LocationDao locationDao();
@@ -21,6 +21,7 @@ public abstract class AstroRoomDatabase extends RoomDatabase {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AstroRoomDatabase.class, "location")
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

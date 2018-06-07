@@ -12,20 +12,36 @@ import pl.politechnika.szczesm3.astroweather.entity.Location;
 
 public class LocationRepository {
     private LocationDao locationDao;
-    private List<Location> allLocations;
 
     public LocationRepository(Application application) {
         AstroRoomDatabase db = AstroRoomDatabase.getDatabase(application);
         locationDao = db.locationDao();
-        allLocations = locationDao.getAllLocations();
-    }
-
-    public List<Location> getAllLocations() {
-        return allLocations;
     }
 
     public void insert (Location location) {
         new insertAsyncTask(locationDao).execute(location);
+    }
+
+    public void deleteAll() {
+        new deleteAllLocationsAsyncTask(locationDao).execute();
+    }
+
+    public List<Location> getAllLocations() {
+        return locationDao.getAllLocations();
+    }
+
+    private static class deleteAllLocationsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private LocationDao mAsyncTaskDao;
+
+        deleteAllLocationsAsyncTask(LocationDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteAll();
+            return null;
+        }
     }
 
     private static class insertAsyncTask extends AsyncTask<Location, Void, Void> {

@@ -1,7 +1,10 @@
 package pl.politechnika.szczesm3.astroweather.service;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,6 +31,7 @@ public class YahooWeatherService {
         this.callback = callback;
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void getLocation(String location) {
         this.location = location;
         new AsyncTask<String, Void, String>() {
@@ -55,6 +59,7 @@ public class YahooWeatherService {
 
                     return result.toString();
                 } catch (Exception e) {
+                    callback.callbackFailure(new YahooWeatherException("Connection error!"));
                 }
                 return null;
             }
@@ -62,7 +67,7 @@ public class YahooWeatherService {
             @Override
             protected void onPostExecute(String s) {
                 if (s == null) {
-                    callback.callbackFailure(new Exception("Empty response!"));
+                    callback.callbackFailure(new YahooWeatherException("Empty response!"));
                     return;
                 }
 
@@ -71,20 +76,19 @@ public class YahooWeatherService {
                     JSONObject queryResults = data.getJSONObject("query");
                     int count = queryResults.optInt("count");
                     if (count == 0) {
-                        callback.callbackFailure(new Exception("Empty response!"));
+                        callback.callbackFailure(new YahooWeatherException("No such place!"));
                         return;
                     }
 
-                    Place place = new Place();
-                    place.crawl(queryResults.optJSONObject("results").optJSONObject("place"));
-                    callback.callbackSuccess(place);
+                    callback.callbackSuccess(queryResults.optJSONObject("results").optJSONObject("place"));
                 } catch (JSONException e) {
-                    callback.callbackFailure(e);
+                    callback.callbackFailure(new YahooWeatherException("Response parsing error!"));
                 }
             }
         }.execute(location);
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void getForecast(Integer woeid, String units) {
         this.woeid = String.valueOf(woeid);
         this.units = units;
@@ -113,6 +117,7 @@ public class YahooWeatherService {
 
                     return result.toString();
                 } catch (Exception e) {
+                    callback.callbackFailure(new YahooWeatherException("Connection error!"));
                 }
                 return null;
             }
@@ -120,24 +125,23 @@ public class YahooWeatherService {
             @Override
             protected void onPostExecute(String s) {
                 if (s == null) {
-                    callback.callbackFailure(new Exception("Empty response!"));
+                    callback.callbackFailure(new YahooWeatherException("No such place!"));
                     return;
                 }
 
                 try {
+                    Log.d("RESPONSE: ", s);
                     JSONObject data = new JSONObject(s);
                     JSONObject queryResults = data.getJSONObject("query");
                     int count = queryResults.optInt("count");
                     if (count == 0) {
-                        callback.callbackFailure(new Exception("Empty response!"));
+                        callback.callbackFailure(new YahooWeatherException("No such place!"));
                         return;
                     }
 
-                    Channel channel = new Channel();
-                    channel.crawl(queryResults.optJSONObject("results").optJSONObject("channel"));
-                    callback.callbackSuccess(channel);
+                    callback.callbackSuccess(queryResults.optJSONObject("results").optJSONObject("channel"));
                 } catch (JSONException e) {
-                    callback.callbackFailure(e);
+                    callback.callbackFailure(new YahooWeatherException("Connection error!"));
                 }
             }
         }.execute(this.woeid, this.units);

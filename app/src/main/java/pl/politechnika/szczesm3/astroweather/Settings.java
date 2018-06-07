@@ -42,6 +42,10 @@ public class Settings extends AppCompatActivity implements Serializable{
             freq.setText(savedInstanceState.getString("freq"));
         }
 
+        updateHints();
+    }
+
+    private void updateHints() {
         lat.setHint(getCurrentLat());
         lon.setHint(getCurrentLon());
         freq.setHint(getCurrentFreq());
@@ -105,6 +109,12 @@ public class Settings extends AppCompatActivity implements Serializable{
             // nothing to do here;
             Toast.makeText(Settings.this,"Enter some values!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateHints();
     }
 
     @Override
