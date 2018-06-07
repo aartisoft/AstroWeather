@@ -97,7 +97,7 @@ public class ForecastFragment extends Fragment implements Callback{
 
     private void loadData() {
         this.channel = new Channel();
-        final String fileName = AppConfig.getInstance().getWoeid() + ".json";
+        final String fileName = AppConfig.getInstance().getWoeid() + AppConfig.getInstance().getUnits() + ".json";
         if (fm.isForecastUpToDate(fileName)) {
             this.channel.crawl(fm.readForecastFromFile(fileName));
             initFragments(this.forecastView);
@@ -126,7 +126,7 @@ public class ForecastFragment extends Fragment implements Callback{
     public void callbackSuccess(JSONObject json) {
         channel = new Channel();
         channel.crawl(json);
-        fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + ".json", json);
+        fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + AppConfig.getInstance().getUnits() + ".json", json);
         initFragments(this.forecastView);
     }
 

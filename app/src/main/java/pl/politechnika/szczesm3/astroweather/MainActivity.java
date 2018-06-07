@@ -104,7 +104,7 @@ public class MainActivity extends FragmentActivity implements Callback {
     @Override
     public void callbackSuccess(JSONObject json) {
         try {
-            fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + ".json", json);
+            fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + AppConfig.getInstance().getUnits() + ".json", json);
         } catch (Exception e) {
             e.printStackTrace();
         }
