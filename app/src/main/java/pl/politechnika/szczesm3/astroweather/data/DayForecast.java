@@ -1,5 +1,7 @@
 package pl.politechnika.szczesm3.astroweather.data;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +17,7 @@ public class DayForecast implements JSONCrawler, Serializable {
 
     @Override
     public void crawl(JSONObject obj) {
+        Log.d("INIT: ", obj.toString());
         this.date = obj.optString("date");
         this.day = obj.optString("day");
         this.code = obj.optString("code");

@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import pl.politechnika.szczesm3.astroweather.R;
@@ -33,18 +36,20 @@ public class ForecastFragment extends Fragment implements Callback{
     YahooWeatherService service;
     FloatingActionButton fab;
     Channel channel;
+    ForecastRow[] oldRows = new ForecastRow[AppConfig.DAYS_COUNT];
+    View forecastView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View forecastView = inflater.inflate(R.layout.fragment_forecast, container, false);
+        this.forecastView = inflater.inflate(R.layout.fragment_forecast, container, false);
 
         service = new YahooWeatherService(this);
         fm = new FileManager(getContext());
 
         loadData();
 
-        fab = forecastView.findViewById(R.id.floatingActionButton);
+        fab = this.forecastView.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,9 +61,9 @@ public class ForecastFragment extends Fragment implements Callback{
             }
         });
 
-        initFragments(forecastView);
+        initFragments(this.forecastView);
 
-        return forecastView;
+        return this.forecastView;
     }
 
     private void initFragments(View view) {
@@ -70,6 +75,7 @@ public class ForecastFragment extends Fragment implements Callback{
         };
 
         FragmentManager fragmentManager = getFragmentManager();
+        assert fragmentManager != null;
         FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
 
         for (int i = 0; i < AppConfig.DAYS_COUNT; i++) {
@@ -78,7 +84,12 @@ public class ForecastFragment extends Fragment implements Callback{
 
             ForecastRow forecastRow = new ForecastRow();
             forecastRow.setArguments(bundle);
-
+            if (oldRows[i] != null) {
+                fragTransaction.detach(oldRows[i]);
+                oldRows[i] = forecastRow;
+            } else {
+                oldRows[i] = forecastRow;
+            }
             fragTransaction.add(frames[i].getId(), forecastRow, "fragment " + i);
         }
         fragTransaction.commit();
@@ -89,6 +100,7 @@ public class ForecastFragment extends Fragment implements Callback{
         final String fileName = AppConfig.getInstance().getWoeid() + ".json";
         if (fm.isForecastUpToDate(fileName)) {
             this.channel.crawl(fm.readForecastFromFile(fileName));
+            initFragments(this.forecastView);
         } else if (isInternetAvailable()) {
             service.getForecast(AppConfig.getInstance().getWoeid(), AppConfig.getInstance().getUnits());
         } else {
@@ -105,10 +117,17 @@ public class ForecastFragment extends Fragment implements Callback{
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        loadData();
+    }
+
+    @Override
     public void callbackSuccess(JSONObject json) {
         channel = new Channel();
         channel.crawl(json);
         fm.saveForecastToFile(AppConfig.getInstance().getWoeid() + ".json", json);
+        initFragments(this.forecastView);
     }
 
     @Override
