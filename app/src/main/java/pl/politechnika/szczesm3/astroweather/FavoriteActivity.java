@@ -3,6 +3,8 @@ package pl.politechnika.szczesm3.astroweather;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Objects;
 
 import pl.politechnika.szczesm3.astroweather.data.Channel;
 import pl.politechnika.szczesm3.astroweather.data.Place;
@@ -65,7 +68,11 @@ public class FavoriteActivity extends AppCompatActivity implements Callback {
             public void onClick(View v) {
                 String city = cityName.getText().toString();
                 if (!city.isEmpty()) {
-                    service.getLocation(city);
+                    if (isInternetAvailable()){
+                        service.getLocation(city);
+                    } else {
+                        Toast.makeText(FavoriteActivity.this,"No internet connection!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     Toast.makeText(FavoriteActivity.this,"City cannot be blank!", Toast.LENGTH_LONG).show();
                 }
@@ -175,5 +182,13 @@ public class FavoriteActivity extends AppCompatActivity implements Callback {
     @Override
     public void callbackFailure(Exception e) {
         Toast.makeText(FavoriteActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+    }
+
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm =
+                (ConnectivityManager) Objects.requireNonNull(getApplicationContext()).getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

@@ -61,8 +61,6 @@ public class ForecastFragment extends Fragment implements Callback{
             }
         });
 
-        initFragments(this.forecastView);
-
         return this.forecastView;
     }
 

@@ -1,7 +1,10 @@
 package pl.politechnika.szczesm3.astroweather;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +25,8 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Objects;
 
 import pl.politechnika.szczesm3.astroweather.config.AppConfig;
 import pl.politechnika.szczesm3.astroweather.data.Channel;
@@ -49,7 +54,12 @@ public class MainActivity extends FragmentActivity implements Callback {
         fm = new FileManager(this);
 
         service = new YahooWeatherService(this);
-        service.getForecast(AppConfig.getInstance().getWoeid(), AppConfig.getInstance().getUnits());
+        if (isInternetAvailable()){
+            service.getForecast(AppConfig.getInstance().getWoeid(), AppConfig.getInstance().getUnits());
+        } else {
+            Toast.makeText(getApplicationContext(), "No internet connection,\n Data might be not up to date!", Toast.LENGTH_LONG).show();
+
+        }
 
         locationRepository = new LocationRepository(getApplication());
         //locationRepository.deleteAll(); // uncomment to remove DB at start-up
@@ -112,8 +122,7 @@ public class MainActivity extends FragmentActivity implements Callback {
 
     @Override
     public void callbackFailure(Exception e) {
-        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-
+        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -166,5 +175,13 @@ public class MainActivity extends FragmentActivity implements Callback {
                 return LANDSCAPE_TAB_COUNT;
             }
         }
+    }
+
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm =
+                (ConnectivityManager) Objects.requireNonNull(getApplicationContext()).getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
